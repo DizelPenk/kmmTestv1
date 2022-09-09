@@ -1,0 +1,35 @@
+CREATE TABLE Book (
+    id TEXT NOT NULL,
+    isbn TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    author TEXT NOT NULL,
+    publicationDate TEXT NOT NULL
+);
+
+CREATE TABLE RemoteKey (
+    id TEXT NOT NULL PRIMARY KEY,
+    prevKey INTEGER AS Int,
+    nextKey INTEGER AS Int
+);
+
+insertBook:
+INSERT INTO Book(id, isbn, title, description, author, publicationDate)
+VALUES (?, ?, ?, ?, ?, ?);
+
+insertRemoteKey:
+INSERT INTO RemoteKey(id, prevKey, nextKey)
+VALUES (?, ?, ?);
+
+selectAllBooks:
+SELECT * FROM Book;
+
+selectRemoteKeyByQuery:
+SELECT * FROM RemoteKey WHERE id = ?;
+
+removeAllBooks:
+DELETE FROM Book;
+
+removeAllRemoteKeys:
+DELETE FROM RemoteKey;
+
